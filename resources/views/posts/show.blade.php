@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('titoloPagina', 'Blog post')
+@section('titoloPagina', $post->title)
 @section('content')           
     <br>
     <br>
