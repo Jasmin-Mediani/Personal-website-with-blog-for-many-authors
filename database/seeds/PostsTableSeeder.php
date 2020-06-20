@@ -22,7 +22,7 @@ class PostsTableSeeder extends Seeder
             $post->user_id = $user->id; //al campo user_id dei post assegno l'id dello user randomico
             $post->user->name = $faker->name();
             $post->title = $faker->sentence(6, true);
-            $post->body = $faker->paragraph(5, true);
+            $post->body = $faker->paragraph(50, true);
             $post->save();
         }
     }

@@ -36,7 +36,8 @@
                                 <tr>
                                     {{-- oppure --}}
                                     {{-- <th><a href="/posts/{{$post->id}}">{{$post->title}}</a></th> --}}
-                                    <th><a href="{{route('posts.show', $post->id)}}"></a></th>
+                                    {{-- <th><a href="{{route('posts.show', $post->id)}}">{{$post->id}}</a></th> --}}
+                                    <th><a href="{{route('posts.show', $post->id)}}">{{$post->title}}</a></th>
                                     {{-- oppure --}}
                                     {{-- <th><a href="/posts/{{$post->id}}/edit">{{$post->title}}</a></th> --}}
                                     <th><a class="btn btn-info" href="{{route('posts.edit', $post->id)}}">Modifica</a></th>
