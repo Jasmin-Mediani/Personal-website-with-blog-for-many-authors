@@ -169,4 +169,32 @@ class PostsController extends Controller
         $post->delete();
         return redirect('/home')->with('success', 'Post eliminato correttamente');
     }
+
+
+
+    // ESEMPIO DI API PER PASSARE I DATI A JAVASCRIPT (((IN QUESTO CASO NON SERVE PERCHE' LA CHIAMATA AI POST LA FACCIO GIA' LATO BACKEND MA E' COMUQUE UN ESEMPIO DI COME PASSARE I DATI))): 
+
+    public function apiPosts()
+    {
+        $posts = Post::orderBy('created_at', 'desc')->get();
+
+        /* per trasformare una collection in un array serve creare un array vuoto dove pushare i singoli post presi dalla collection:
+        
+
+        $arrayPosts= [];
+        foreach ($posts as $post) {
+            $arrayPosts[] = $post->toArray();
+        } 
+        dd($arrayPosts);
+        
+
+       ... oppure  ->toArray()  */
+
+        $posts = Post::orderBy('created_at', 'desc')->get()->toArray();
+
+        $postPerJs = json_encode($posts);
+        return $postPerJs; 
+
+        
+    }
 }

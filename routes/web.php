@@ -32,3 +32,14 @@ Route::resource('posts', 'PostsController');  //nota: 'posts' è il nome della t
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+
+
+
+// rotta di prova per una chiamata Ajax che renderizza tutti i post (è superflua perché lo faccio già lato backend qui con laravel)
+Route::get('/api/posts', 'PostsController@apiPosts');
