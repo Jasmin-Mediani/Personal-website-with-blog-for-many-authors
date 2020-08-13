@@ -8,4 +8,6 @@
 @import '~bootstrap/scss/bootstrap';
 
 // Custom CSS, il mio css personale: 
-@import 'custom';
+@import 'partials/_header.scss';
+@import 'partials/_main.scss';
+@import 'partials/_footer.scss';

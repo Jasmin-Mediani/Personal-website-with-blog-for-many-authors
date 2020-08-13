@@ -11,7 +11,7 @@
     @include('inc.navbar')
     <div class="container">
         
-        @yield('content')  {{-- va a prendere le @section scritte in views/pages... forse perché sono nella stessa cartella madre --}}
+        @yield('content')  {{-- va a prendere le @section scritte in views/pages, che sono nella stessa cartella madre --}}
 
     </div>
 </body>

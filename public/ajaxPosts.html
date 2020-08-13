@@ -21,6 +21,7 @@
         url: "/api/posts",
         method: "GET",
         success: function(infoInArrivo) {
+            //nota: infoInArrivo è l'array di oggetti che in PostsController è la variabile $postsPerJS
             var posts = JSON.parse(infoInArrivo); //senza il JSON.parse ogni lettera dei post viene messa in un array.
             for (var i = 0; i < posts.length; i++) {
                 var post = posts[i];

@@ -1,3 +1,4 @@
+<header>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
           <div class="container">  {{-- container opzionale --}}
@@ -72,4 +73,4 @@
           </div>
     </nav>
   </div>
-  
+</header>

@@ -27,7 +27,7 @@ class PostsController extends Controller
     public function index()
     {
         
-        /************ METODO SENZA ELOQUENT *******************/
+        /******** METODO SENZA ELOQUENT, vecchia versione simile a sql ************/
 
         //$posts = DB::select('SELECT * FROM posts');
 
@@ -192,8 +192,8 @@ class PostsController extends Controller
 
         $posts = Post::orderBy('created_at', 'desc')->get()->toArray();
 
-        $postPerJs = json_encode($posts);
-        return $postPerJs; 
+        $postsPerJs = json_encode($posts);
+        return $postsPerJs; 
 
         
     }

@@ -10928,3 +10928,24 @@ a.text-dark:focus {
   }
 }
 
+header #app .navbar {
+  height: 60px;
+}
+
+/* --------- SEZIONE 1 (Homepage) --------*/
+
+.sezione {
+  height: calc(100vh - 60px);
+}
+
+/* --------- SEZIONE 2 (About) ---------*/
+
+/* --------- SEZIONE 3 (Servizi) ---------*/
+
+/* --------- SEZIONE 4 (Blog) -----------*/
+
+footer {
+  display: none;
+  /*da eliminare*/
+}
+

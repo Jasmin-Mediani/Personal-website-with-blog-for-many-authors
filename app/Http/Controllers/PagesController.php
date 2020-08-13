@@ -35,7 +35,7 @@ class PagesController extends Controller
             'servizi' => ['Servizio n° 1', 'Servizio n° 2', 'Servizio n° 3']
             );
             
-        return view('pages.services')->with($data); //la pagina services che si trova nella cartella pages, in resources. Al momento del return della view, se uso ->with() e passo un array, quando vado nella view/html ho già accesso all'interno dell'array. Devo solo decidere quale chiave usare... foreach servizi as servizio... <li> {{servizio}} </li> mi restituisce direttamebte Web Design, Programming e SEO messi in lista. 
+        return view('pages.services')->with($data); //la pagina services che si trova nella cartella pages, in resources. Al momento del return della view, se uso ->with() e passo un array, quando vado nella view/html ho già accesso all'interno dell'array. Devo solo decidere quale chiave usare... foreach servizi as servizio... <li> {{servizio}} </li> mi restituisce direttamente i servizi messi in lista. 
     }
 
     /**
