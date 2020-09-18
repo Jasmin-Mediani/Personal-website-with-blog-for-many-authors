@@ -1,13 +1,14 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
-// Custom CSS, il mio css personale: 
-@import 'partials/_header.scss';
-@import 'partials/_main.scss';
-@import 'partials/_footer.scss';
+// Custom CSS, il mio css personale:
+@import "partials/_header.scss";
+@import "partials/_main.scss";
+@import "partials/_footer.scss";
+@import "partials/_show.scss";

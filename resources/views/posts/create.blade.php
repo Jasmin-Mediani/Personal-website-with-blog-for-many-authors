@@ -4,7 +4,7 @@
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>  {{-- guida per installare ckeditor in laravel 7:  https://ckeditor.com/docs/ckeditor4/latest/guide/dev_installation.html --}}
     <br>
     <h2>Crea un post</h2>
-        {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST']) !!}
+        {!! Form::open(['action' => 'PostsController@store', 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             @csrf
             @method('POST')
 
@@ -36,6 +36,11 @@
 
 
             {{------------------ FORM DEL TASTO SALVA -------------------}}
+
+            <div class="form-group">
+                {{Form::file('cover_image')}}
+                {{-- <input type="file" class="cover_image"> --}}
+            </div>
 
             <div class="form-group">
                 <input class="btn btn-primary" type="submit" value="Salva">

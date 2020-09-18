@@ -37,6 +37,9 @@ class PostsController extends Controller
         //$posts = Post::orderBy('created_at', 'desc')->take(1)->get();
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
 
+
+        
+
         //return view('posts.index', compact('posts'));
         return view('posts.index')->with('posts', $posts);
     }
@@ -63,15 +66,36 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999' //NOTA: nullable a 'cover_image' l'avrei già messo in create_posts_table...  NOTA2: nella maggior parte dei server apache la dimensione massima consentita è 2MB (2000) per le immagini, quindi se non lo imposto ci sta che possa dare problemi. 
         ]);
 
         
+        // Gestione dell'Upload del File
+        if($request->hasFile('cover_image')) {
+            // ottenere il nome del file con estensione
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            //ottenere solo il nome del file
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);   //pathinfo() estrae il nome senza estenzione, è PHP puro
+            //ottenere solo l'estensione
+            $extension = $request->file('cover_image')->getClientOriginalExtension(); 
+            //Nome del file da salvare
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            // Upload dell'immagine
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);  //crea una cartella in storage/app/public che si chiama 'public images' e ci salva l'immagine col nome appena costruito.
+        } else {
+            $fileNameToStore = 'noimage.jpg';  //se l'utente non uppa un'immagine apparirà questo
+
+            //ora faccio php artisan storage:link e le immagini che salvo in storage vanno anche nello storage di public
+        }
+
         //crea un post riempiendo i campi del form uno per uno (gli vanno detti):
         $post = new Post;
         $post->user_id = auth()->user()->id;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
+        $post->cover_image = $fileNameToStore;
         $post->save();
+        
 
         // crea un post riempiendo i campi del form tutti insieme: 
         $data = $request->all(); //prende tutte le richieste contenute nel form...

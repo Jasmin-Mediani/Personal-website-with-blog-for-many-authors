@@ -10932,6 +10932,10 @@ header #app .navbar {
   height: 60px;
 }
 
+header button:focus {
+  outline: none;
+}
+
 /* --------- SEZIONE 1 (Homepage) --------*/
 
 .sezione {
@@ -10947,5 +10951,53 @@ header #app .navbar {
 footer {
   display: none;
   /*da eliminare*/
+}
+
+.show-main {
+  padding: 50px 0px;
+}
+
+.show-main .show-upper h2 {
+  margin-bottom: 30px;
+}
+
+.show-main .show-upper .show-image {
+  float: right;
+  padding-top: 9px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  max-height: 500px;
+}
+
+.show-main .show-upper .show-body {
+  text-align: justify;
+  padding-top: 0px !important;
+}
+
+.show-main .show-upper .show-body p {
+  margin-bottom: 10px;
+}
+
+.show-main .show-upper::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.show-main .show-lower {
+  display: flex;
+  flex-direction: column;
+}
+
+.show-main .show-lower small {
+  padding: 30px 0px;
+}
+
+.show-main .show-lower a {
+  display: block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: flex-end;
 }
 
