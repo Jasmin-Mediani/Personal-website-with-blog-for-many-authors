@@ -39,7 +39,6 @@
 
             <div class="form-group">
                 {{Form::file('cover_image')}}
-                {{-- <input type="file" class="cover_image"> --}}
             </div>
 
             <div class="form-group">

@@ -4,9 +4,9 @@
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>  {{-- guida per installare ckeditor in laravel 7:  https://ckeditor.com/docs/ckeditor4/latest/guide/dev_installation.html --}}
     <br>
     <h2>Modifica il post</h2>
-        {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST']) !!}
+        {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             @csrf
-            @method('PUT')
+            @method('PATCH') <!--PATCH PER POTER MODIFICARE ANCHE LE IMMAGINI-->
 
             {{------------------ TITOLO -------------------}}
 
@@ -32,6 +32,12 @@
                 <script>
                     CKEDITOR.replace( 'editor' );
                 </script>
+            </div>
+
+            {{------------ FORM DEL CARICAMENTO DELL'IMMAGINE --------------}}
+
+            <div class="form-group">
+                {{Form::file('cover_image')}}
             </div>
 
 

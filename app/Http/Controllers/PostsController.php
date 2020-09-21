@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Post;
 /* SENZA ELOQUENT) Per prendere i dati dal db si aggiunge use/DB */
 use DB; 
@@ -68,7 +69,6 @@ class PostsController extends Controller
             'body' => 'required',
             'cover_image' => 'image|nullable|max:1999' //NOTA: nullable a 'cover_image' l'avrei già messo in create_posts_table...  NOTA2: nella maggior parte dei server apache la dimensione massima consentita è 2MB (2000) per le immagini, quindi se non lo imposto ci sta che possa dare problemi. 
         ]);
-
         
         // Gestione dell'Upload del File
         if($request->hasFile('cover_image')) {
@@ -102,7 +102,9 @@ class PostsController extends Controller
         $post->fill($data);  //riempie tutti i campi...
         $post->save();
 
-        return redirect('/home')->with('success', 'Post creato correttamente');
+        //return redirect('/home')->with('success', 'Post creato correttamente');
+        return redirect('posts/' . $post->id)->with('success', 'Post creato correttamente');
+        
     }
 
     /**
@@ -138,6 +140,7 @@ class PostsController extends Controller
         return view('posts.edit', compact('post'));
     }
 
+
     /**
      * Update the specified resource in storage.
      *
@@ -154,6 +157,7 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
+            'cover_image' => 'image|nullable|max:1999'
         ]);
 
         
@@ -163,13 +167,42 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->save();
 
+        if ($request->hasFile('cover_image')) {
+
+            /***** CANCELLA IMMAGINE PRESENTE E INSERISCINE UNA NUOVA: quasi uguale a quella in store ma con Storage::delete *****/
+            
+           Storage::delete('public/cover_images/'. $post->cover_image);  //concatenazione per avere il path completo dell'immagine
+            
+            // ottenere il nome del file con estensione
+            $fileNameWithExt = $request->file('cover_image')->getClientOriginalName();
+            //ottenere solo il nome del file
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);   //pathinfo() estrae il nome senza estenzione, è PHP puro
+            //ottenere solo l'estensione
+            $extension = $request->file('cover_image')->getClientOriginalExtension(); 
+            //Nome del file da salvare
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+            // Upload dell'immagine
+            $path = $request->file('cover_image')->storeAs('public/cover_images', $fileNameToStore);  //crea una cartella in storage/app/public che si chiama 'public images' e ci salva l'immagine col nome appena costruito.
+            $post->cover_image = $fileNameToStore;
+        }
+
+            // se l'utente aveva un'immagine nel post e quando modifica il post non ne seleziona/uppa una nuova... evidentemente non vuole un post con immagine, quindi cencello quella che c'era prima cosicché il post sia privo di immagine come vuole l'utente:
+        if (!$request->hasFile('cover_image')) {
+            Storage::delete('public/cover_images/'. $post->cover_image); 
+         }
+
         // crea un post riempiendo i campi del form tutti insieme: 
         $data = $request->all(); //prende tutte le richieste contenute nel form...
         $post->fill($data);  //riempie tutti i campi...
         $post->save();
 
-        //return redirect('/posts')->with('success', 'Post modificato correttamente');
-        return redirect('/home')->with('success', 'Post modificato correttamente');
+        
+        //return redirect('/home')->with('success', 'Post modificato correttamente');
+        return redirect('posts/'. $post->id)->with('success', 'Post modificato correttamente'); //NOTA: l'avviso di successo della modifica del post non si vede.
+       
+
+
+        
 
         
     }

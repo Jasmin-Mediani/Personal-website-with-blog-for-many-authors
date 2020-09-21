@@ -1,12 +1,12 @@
 .show-main {
-    padding: 50px 0px;
+    padding: 80px 0px;
     // border: 1px solid purple;
     .show-upper {
         // border: 1px solid red;
 
         h2 {
             // border: 1px solid black;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
         .show-image {
             float: right;
@@ -33,15 +33,17 @@
     }
 
     .show-lower {
-        display: flex;
-        flex-direction: column;
-        // border: 1px solid blue;
-
-        small {
-            padding: 30px 0px;
+        p {
+            padding-top: 15px;
+            padding-bottom: 20px;
         }
-        a {
-            display: block;
+
+        .flex-buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        .btn-secondary,
+        .btn-info {
             width: fit-content;
             align-self: flex-end;
         }

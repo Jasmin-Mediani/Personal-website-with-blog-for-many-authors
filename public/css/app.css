@@ -10948,17 +10948,21 @@ header button:focus {
 
 /* --------- SEZIONE 4 (Blog) -----------*/
 
+table tbody td {
+  vertical-align: middle !important;
+}
+
 footer {
   display: none;
   /*da eliminare*/
 }
 
 .show-main {
-  padding: 50px 0px;
+  padding: 80px 0px;
 }
 
 .show-main .show-upper h2 {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .show-main .show-upper .show-image {
@@ -10984,17 +10988,18 @@ footer {
   display: table;
 }
 
-.show-main .show-lower {
+.show-main .show-lower p {
+  padding-top: 15px;
+  padding-bottom: 20px;
+}
+
+.show-main .show-lower .flex-buttons {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-.show-main .show-lower small {
-  padding: 30px 0px;
-}
-
-.show-main .show-lower a {
-  display: block;
+.show-main .show-lower .btn-secondary,
+.show-main .show-lower .btn-info {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;

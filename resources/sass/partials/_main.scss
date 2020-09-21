@@ -10,12 +10,21 @@ body {
 .sezione {
     height: calc(100vh - 60px);
     //background-color: red;
-
 }
-
 
 /* --------- SEZIONE 2 (About) ---------*/
 
 /* --------- SEZIONE 3 (Servizi) ---------*/
 
 /* --------- SEZIONE 4 (Blog) -----------*/
+
+table {
+    tbody {
+        td {
+            vertical-align: middle !important;
+            img {
+                //object-fit: cover;
+            }
+        }
+    }
+}

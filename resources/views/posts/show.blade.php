@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('titoloPagina', $post->title)
-@section('content')           
+@section('content')  
     <div class="show-main">
         <div class="show-upper">
             <h2>{{$post->title}}</h2>
@@ -10,8 +10,14 @@
             </div>
         </div>
         <div class="show-lower">
-            <small>creato in data: {{$post->created_at->format('d-m-Y')}}</small>
-            <a href="{{route('posts.index')}}" class="btn btn-secondary">Indietro</a>
+        <p><small>creato in data: {{$post->created_at->format('d-m-Y')}} da <span class="nome-autore">{{$post->user->name}}</span></small></p>
+            <div class="flex-buttons">
+                <a href="{{route('posts.index')}}" class="btn btn-secondary">Indietro</a>
+            
+            @if(Auth::id() == $post->user->id)
+                <a class="btn btn-info" href="{{route('posts.edit', $post->id)}}">Modifica</a>
+            </div>
+            @endif
         </div>
     </div>
 @endsection

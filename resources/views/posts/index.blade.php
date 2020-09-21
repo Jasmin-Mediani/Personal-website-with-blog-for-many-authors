@@ -21,6 +21,7 @@
       <thead class="thead-dark ">
         <tr>
           <th>Titolo</th>
+          <th>Immagine</th>
           <th>Autore</th>
         </tr>
       </thead>
@@ -28,6 +29,13 @@
         @foreach ($posts as $post)
           <tr>
           <td><a href="{{route('posts.show', $post['id'])}}">{{$post->title}}</a></td>
+          @if ($post->cover_image !== "noimage.jpg")
+            <td><img height="100px" width="90px" class="show-image" src="/storage/cover_images/{{$post->cover_image}}" alt=""></td>
+          @else
+            <td>
+              <img class="show-image" src="/storage/cover_images/{{$post->cover_image}}" alt="">
+            </td>
+          @endif
           <td>{{$post->user->name}}</td>
           </tr>
         @endforeach
