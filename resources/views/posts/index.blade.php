@@ -29,12 +29,10 @@
         @foreach ($posts as $post)
           <tr>
           <td><a href="{{route('posts.show', $post['id'])}}">{{$post->title}}</a></td>
-          @if ($post->cover_image !== "noimage.jpg")
-            <td><img height="100px" width="90px" class="show-image" src="/storage/cover_images/{{$post->cover_image}}" alt=""></td>
-          @else
-            <td>
-              <img class="show-image" src="/storage/cover_images/{{$post->cover_image}}" alt="">
-            </td>
+          @if ($post->cover_image == "")
+            <td><img height="100px" width="100px" class="invisible show-image" src="/storage/cover_images/{{$post->cover_image}}" alt=""></td>
+          @else 
+            <td><img height="100px" width="100px" class="show-image" src="/storage/cover_images/{{$post->cover_image}}" alt=""></td>
           @endif
           <td>{{$post->user->name}}</td>
           </tr>

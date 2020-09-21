@@ -15,7 +15,7 @@
                 <a href="{{route('posts.index')}}" class="btn btn-secondary">Indietro</a>
             
             @if(Auth::id() == $post->user->id)
-                <a class="btn btn-info" href="{{route('posts.edit', $post->id)}}">Modifica</a>
+                <a class="btn btn-info" href="{{route('posts.edit', $post->id)}}">Modifica</a>                
             </div>
             @endif
         </div>

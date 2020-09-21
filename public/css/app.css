@@ -11006,3 +11006,29 @@ footer {
   align-self: flex-end;
 }
 
+.edit-upload {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.edit-upload div.form-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.edit-upload div.form-group #delete-image {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-bottom: 5px;
+}
+
+.invisible {
+  display: none;
+}
+

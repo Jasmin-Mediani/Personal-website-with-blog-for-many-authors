@@ -35,9 +35,27 @@
             </div>
 
             {{------------ FORM DEL CARICAMENTO DELL'IMMAGINE --------------}}
-
-            <div class="form-group">
-                {{Form::file('cover_image')}}
+            
+            <div class="edit-upload">
+                <div class="form-group">
+                    
+    
+                    
+                    @if ($post->cover_image == "") 
+                        <img class="anteprima-immagine-corrente invisible" src="/storage/cover_images/{{$post->cover_image}}" alt="" height="150px" width="130px">                    
+                    @else 
+                    <label for="delete-image"> Cancella l'immagine corrente </label>
+                    <!-- TRICK: CHECKBOX SENTINELLA USATA COME BOTTONE PER CANCELLARE L'IMMAGINE CORRENTE --->
+                    <!-- (vedi PostsController, funzione update)--->
+                    <input type="checkbox" id="delete-image" name="delete-image" value="checked">
+                        <img class="anteprima-immagine-corrente" src="/storage/cover_images/{{$post->cover_image}}" alt="" height="150px" width="130px"> 
+                    @endif
+                </div>
+    
+                <div class="form-group">
+                    <input type="file" name="cover_image"> 
+                    {{-- {{Form::file('cover_image')}} --}}
+                </div>
             </div>
 
 

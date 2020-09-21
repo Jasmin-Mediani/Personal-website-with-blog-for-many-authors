@@ -153,7 +153,8 @@ class PostsController extends Controller
 
 
     public function update(Request $request, $id)  // NOTA: l'update è identica alla store, cambia solo che non voglio generare un new Post, ma selezionarlo per id.... quindi....  "$post = Post::find($id)" al posto di "$post = new Post". E poi cambia il messaggio dato all'utente (post MODIFICATO correttamente invece che "creato" correttamente).
-    {
+    {   
+        
         $this->validate($request, [
             'title' => 'required',
             'body' => 'required',
@@ -167,9 +168,17 @@ class PostsController extends Controller
         $post->body = $request->input('body');
         $post->save();
 
-        if ($request->hasFile('cover_image')) {
+        /*************** CANCELLARE L'IMMAGINE CORRENTE CON CHECKBOX, A COMANDO DELL'UTENTE ******************/
 
-            /***** CANCELLA IMMAGINE PRESENTE E INSERISCINE UNA NUOVA: quasi uguale a quella in store ma con Storage::delete *****/
+        // TRICK: Uso una check-box (a mo' di variabile sentinella) per cancellare l'immagine corrente del post: se la checkbox ha valore 'cancella' (e ce l'ha), parte la fuzione storage::delete...  In pratica uso la check box quasi come un bottone che al click si segna di cancellare la foto appena Salvo il post con le modifiche:
+        if ($request->input ('delete-image') == 'checked') {
+            Storage::delete('public/cover_images/'. $post->cover_image);  //immagine sull'HDD
+            $post->cover_image = null;  //annullo l'immagine anche sul db, sennò funziona ma dà errore in console
+        }
+
+
+        /***** CANCELLA IMMAGINE PRESENTE QUANDO SE NE UPPA UNA NUOVA: quasi uguale a quella in store ma con Storage::delete *****/
+        if ($request->hasFile('cover_image')) {
             
            Storage::delete('public/cover_images/'. $post->cover_image);  //concatenazione per avere il path completo dell'immagine
             
@@ -186,11 +195,6 @@ class PostsController extends Controller
             $post->cover_image = $fileNameToStore;
         }
 
-            // se l'utente aveva un'immagine nel post e quando modifica il post non ne seleziona/uppa una nuova... evidentemente non vuole un post con immagine, quindi cencello quella che c'era prima cosicché il post sia privo di immagine come vuole l'utente:
-        if (!$request->hasFile('cover_image')) {
-            Storage::delete('public/cover_images/'. $post->cover_image); 
-         }
-
         // crea un post riempiendo i campi del form tutti insieme: 
         $data = $request->all(); //prende tutte le richieste contenute nel form...
         $post->fill($data);  //riempie tutti i campi...
@@ -199,13 +203,9 @@ class PostsController extends Controller
         
         //return redirect('/home')->with('success', 'Post modificato correttamente');
         return redirect('posts/'. $post->id)->with('success', 'Post modificato correttamente'); //NOTA: l'avviso di successo della modifica del post non si vede.
-       
-
-
-        
-
-        
+                     
     }
+    
 
     /**
      * Remove the specified resource from storage.
