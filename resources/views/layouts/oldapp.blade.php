@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,8 +11,8 @@
     @include('inc.navbar')
     <div class="container">
         
-        @yield('content')  {{-- va a prendere le @section scritte in views/pages, che sono nella stessa cartella madre --}}
+        @yield('content')  va a prendere le @section scritte in views/pages, che sono nella stessa cartella madre --}}
 
-    </div>
+    {{-- </div>
 </body>
-</html>
+</html> --}}

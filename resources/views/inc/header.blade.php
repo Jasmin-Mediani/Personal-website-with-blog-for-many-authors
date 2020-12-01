@@ -1,15 +1,13 @@
 <header>
   <div id="app">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-          <div class="container">  {{-- container opzionale --}}
-            <a class="navbar-brand" href="{{route('index')}}">J M</a>
+            <a class="navbar-brand" href="{{route('index')}}"><img src="/immagini/logo2.png" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                  <ul class="navbar-nav mr-auto">
+                  <ul class="navbar-nav mr-auto navbar-sx" >
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('index')}}">Home <span class="sr-only">(current)</span></a>
                   </li>
@@ -43,7 +41,7 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a> --}}
 
-                            <div class="dropdown">
+                            <div class="dropdown" id="navbarDropdown">
                                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }}
                                 </button>
@@ -73,5 +71,5 @@
             </div>
           </div>
     </nav>
-  </div>
 </header>
+

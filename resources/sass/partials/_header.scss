@@ -1,10 +1,64 @@
 header {
     #app {
-        .navbar {
-            height: 60px;
+        nav {
+            background-color: #ede2da !important;
+            height: 100px;
+            align-items: center;
+            padding-left: 5%;
+            padding-right: 5%;
+            color: #b99d7e;
+            border-bottom: 1px solid #b99d7e;
+            .navbar-collapse {
+                ul.navbar-nav.mr-auto {
+                    width: 60%;
+                }
+            }
         }
     }
-    button:focus {
-        outline: none;
+
+    .navbar-brand img {
+        max-height: 80px;
+        max-width: 80px;
     }
+}
+
+@media (min-width: 768px) {
+    #navbarSupportedContent {
+        display: flex !important;
+        flex-basis: auto;
+        justify-content: space-between;
+    }
+}
+
+.navbar-sx {
+    display: flex !important;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+a.nav-link,
+.nav-item,
+.text-light {
+    color: #b99d7e !important;
+    text-transform: uppercase;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+
+button {
+    background-color: #d5c3ae;
+    border: 1px solid #3d3d3d;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 10px 20px;
+
+    a,
+    a:hover {
+        color: #3d3d3d;
+        text-decoration: none;
+    }
+}
+
+button:hover {
+    background-color: #e4d0ba;
 }

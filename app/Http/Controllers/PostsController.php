@@ -126,6 +126,8 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+     
     public function edit($id)
     {
         $post = Post::find($id);
@@ -229,29 +231,55 @@ class PostsController extends Controller
 
 
 
+
+
+
+
+
+
+
+
+
+
     // ESEMPIO DI API PER PASSARE I DATI A JAVASCRIPT (((IN QUESTO CASO NON SERVE PERCHE' LA CHIAMATA AI POST LA FACCIO GIA' LATO BACKEND MA E' COMUQUE UN ESEMPIO DI COME PASSARE I DATI))): 
 
     public function apiPosts()
     {
+        /* versione 1) 
+        dove il backend restituisce TUTTO il contenuto del DB, cioé TUTTI i post senza filtri. Può andare bene per progetti piccoli... ma sarebbe meglio non inviare tutti i dati del db in una sola richiesta:
+
         $posts = Post::orderBy('created_at', 'desc')->get();
 
         /* per trasformare una collection in un array serve creare un array vuoto dove pushare i singoli post presi dalla collection:
         
-
         $arrayPosts= [];
         foreach ($posts as $post) {
             $arrayPosts[] = $post->toArray();
         } 
         dd($arrayPosts);
         
+       ... oppure  ->toArray()
 
-       ... oppure  ->toArray()  */
+        $posts = Post::orderBy('created_at', 'desc')->get()->toArray(); 
+
+        */
+        
+
+
+        /* versione 2) 
+        dove creo i vari parametri per costruire il link del pacchetto JSON con un minimo di filtro iniziale. Non dovrei inviare da subito $posts::all(), altrimenti all'utente arrivano chissà quante centinaia di risultati e chissà in quanti minuti gli si caricano.
+
+        $termine = $_GET['termine'];  //oppure    $termine = Input::get('termine');
+        $maxResults = $_GET['maxResults']; // oppure    $maxResults = Input::get('maxResults');
+
+        $posts = Post::where('title', 'LIKE', '%'.$termine.'%')->limit($maxResults)->get();
 
         $posts = Post::orderBy('created_at', 'desc')->get()->toArray();
 
         $postsPerJs = json_encode($posts);
-        return $postsPerJs; 
+        return $postsPerJs;
 
+        */
         
     }
 }

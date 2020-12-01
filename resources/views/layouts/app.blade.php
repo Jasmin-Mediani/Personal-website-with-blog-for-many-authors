@@ -9,15 +9,15 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital@0;1&display=swap" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         @include('inc.header')
-        <div class="container container-generale">  <!-- container generale 80% -->
             <main>  
                 @yield('content') 
             </main>
-        </div>
         @include('inc.footer')
     </body>
 

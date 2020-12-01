@@ -10928,18 +10928,129 @@ a.text-dark:focus {
   }
 }
 
-header #app .navbar {
-  height: 60px;
+header #app nav {
+  background-color: #ede2da !important;
+  height: 100px;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  color: #b99d7e;
+  border-bottom: 1px solid #b99d7e;
 }
 
-header button:focus {
-  outline: none;
+header #app nav .navbar-collapse ul.navbar-nav.mr-auto {
+  width: 60%;
+}
+
+header .navbar-brand img {
+  max-height: 80px;
+  max-width: 80px;
+}
+
+@media (min-width: 768px) {
+  #navbarSupportedContent {
+    display: flex !important;
+    flex-basis: auto;
+    justify-content: space-between;
+  }
+}
+
+.navbar-sx {
+  display: flex !important;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+a.nav-link,
+.nav-item,
+.text-light {
+  color: #b99d7e !important;
+  text-transform: uppercase;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+button {
+  background-color: #d5c3ae;
+  border: 1px solid #3d3d3d;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding: 10px 20px;
+}
+
+button a,
+button a:hover {
+  color: #3d3d3d;
+  text-decoration: none;
+}
+
+button:hover {
+  background-color: #e4d0ba;
 }
 
 /* --------- SEZIONE 1 (Homepage) --------*/
 
+.container {
+  padding: 0px;
+  margin: 0px;
+}
+
 .sezione {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 101px);
+}
+
+main {
+  width: 100%;
+  margin: o auto !important;
+  height: calc(100% - 101px);
+}
+
+main .sezione-home {
+  background-color: #ede2da;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+main .sezione-home .semi-hero {
+  background-image: url("/immagini/hero.png");
+  background-size: cover;
+  background-position: center;
+  height: inherit;
+  width: 50%;
+}
+
+main .sezione-home .testo-jumbo {
+  height: inherit;
+  width: 50%;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 70px;
+  flex-direction: column;
+}
+
+main .sezione-home .testo-jumbo h2,
+main .sezione-home .testo-jumbo h3 {
+  color: #3d3d3d;
+  margin-bottom: 30px;
+}
+
+main .sezione-home .testo-jumbo h2 {
+  font-size: 4rem;
+  font-family: "Cormorant Infant", serif;
+  text-align: center;
+}
+
+main .sezione-home .testo-jumbo h3 {
+  text-transform: uppercase;
+  color: #b99d7e;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  font-weight: bolder;
 }
 
 /* --------- SEZIONE 2 (About) ---------*/
@@ -10948,8 +11059,17 @@ header button:focus {
 
 /* --------- SEZIONE 4 (Blog) -----------*/
 
-table tbody td {
+.container-indice-blog {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container-indice-blog table tbody td {
   vertical-align: middle !important;
+}
+
+.container-indice-blog .invisible {
+  display: none;
 }
 
 footer {

@@ -2,7 +2,8 @@
 @section('titoloPagina', 'Blog')
 @section('content')
 
-  {{-- questi sono i messaggi che compaiono in alto nella view / quando modifico o elimino un post --}}
+ <div class="container-indice-blog">
+    {{-- questi sono i messaggi che compaiono in alto nella view / quando modifico o elimino un post --}}
     
     <br>
     @if(Session::has('success'))
@@ -44,5 +45,6 @@
     @endif
 
     {{$posts->links()}}
+ </div>
 
 @endsection

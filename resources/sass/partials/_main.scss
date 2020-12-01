@@ -1,15 +1,66 @@
 /* --------- SEZIONE 1 (Homepage) --------*/
 
-body {
-    //background-color: orange;
+.container {
+    padding: 0px;
+    margin: 0px;
 }
-.container-generale {
-    //background-color: green !important;
-    //padding: 0;
-}
+
 .sezione {
-    height: calc(100vh - 60px);
-    //background-color: red;
+    height: calc(100vh - 101px); //100 +1 border dell'header
+}
+
+main {
+    width: 100%;
+    margin: o auto !important;
+    height: calc(100% - 101px);
+
+    .sezione-home {
+        background-color: #ede2da;
+        width: 100vw;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        .semi-hero {
+            background-image: url("/immagini/hero.png");
+            background-size: cover;
+            background-position: center;
+            height: inherit;
+            width: 50%;
+        }
+
+        .testo-jumbo {
+            height: inherit;
+            width: 50%;
+            height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 70px;
+            flex-direction: column;
+
+            h2,
+            h3 {
+                color: #3d3d3d;
+                margin-bottom: 30px;
+            }
+
+            h2 {
+                font-size: 4rem;
+                font-family: "Cormorant Infant", serif;
+                text-align: center;
+            }
+
+            h3 {
+                text-transform: uppercase;
+                color: #b99d7e;
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+                font-weight: bolder;
+            }
+        }
+    }
 }
 
 /* --------- SEZIONE 2 (About) ---------*/
@@ -18,13 +69,21 @@ body {
 
 /* --------- SEZIONE 4 (Blog) -----------*/
 
-table {
-    tbody {
-        td {
-            vertical-align: middle !important;
-            img {
-                //object-fit: cover;
+.container-indice-blog {
+    width: 80%;
+    margin: 0 auto;
+    table {
+        tbody {
+            td {
+                vertical-align: middle !important;
+                img {
+                    //object-fit: cover;
+                }
             }
         }
+    }
+
+    .invisible {
+        display: none;
     }
 }
