@@ -94,7 +94,7 @@ main {
     }
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .contenitore-about {
         height: auto !important;
         padding: 50px;
@@ -113,6 +113,25 @@ main {
 
     body {
         background-color: #ede2da;
+    }
+
+    .sezione-home,
+    .sezione {
+        flex-wrap: wrap;
+        flex-direction: column;
+        .semi-hero {
+            width: 100% !important;
+            height: 100vh !important;
+        }
+
+        .testo-jumbo {
+            width: 100% !important;
+            height: 100vh !important;
+            h3 {
+                text-align: center;
+                margin-bottom: 50px !important;
+            }
+        }
     }
 }
 
