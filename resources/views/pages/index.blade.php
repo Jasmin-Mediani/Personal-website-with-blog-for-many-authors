@@ -11,6 +11,5 @@
             <h3>We visualize your brand's highest self – by design.</h3>
             <button><a href="{{route('services')}}">view services</a></button>
         </div>
-
     </div>
 @endsection

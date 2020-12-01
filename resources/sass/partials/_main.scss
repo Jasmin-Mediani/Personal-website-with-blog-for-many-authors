@@ -65,6 +65,57 @@ main {
 
 /* --------- SEZIONE 2 (About) ---------*/
 
+.contenitore-about {
+    background-color: #ede2da;
+    height: calc(100vh - 101px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .about-wrapper {
+        max-height: 400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .foto-autore img {
+            max-height: 400px;
+        }
+        .testo-about {
+            // background-color: green;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between !important;
+            height: 400px;
+            max-width: 400px !important;
+            overflow: auto;
+            padding-right: 20px;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .contenitore-about {
+        height: auto !important;
+        padding: 50px;
+        img {
+            padding: 50px;
+        }
+
+        .testo-about {
+            padding: 50px;
+            height: auto;
+            height: auto !important;
+            max-width: auto !important;
+            overflow: none !important;
+        }
+    }
+
+    body {
+        background-color: #ede2da;
+    }
+}
+
 /* --------- SEZIONE 3 (Servizi) ---------*/
 
 /* --------- SEZIONE 4 (Blog) -----------*/
