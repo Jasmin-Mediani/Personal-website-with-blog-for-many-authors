@@ -3,7 +3,8 @@
 @section('content')
     <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>  {{-- guida per installare ckeditor in laravel 7:  https://ckeditor.com/docs/ckeditor4/latest/guide/dev_installation.html --}}
     <br>
-    <h2>Modifica il post</h2>
+    <div class="container">
+        <h2>Modifica il post</h2>
         {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
             @csrf
             @method('PATCH') <!--PATCH PER POTER MODIFICARE ANCHE LE IMMAGINI-->
@@ -37,9 +38,7 @@
             {{------------ FORM DEL CARICAMENTO DELL'IMMAGINE --------------}}
             
             <div class="edit-upload">
-                <div class="form-group">
-                    
-    
+                <div class="form-group">   
                     
                     @if ($post->cover_image == "") 
                         <img class="anteprima-immagine-corrente invisible" src="/storage/cover_images/{{$post->cover_image}}" alt="" height="150px" width="130px">                    
@@ -64,6 +63,7 @@
             <div class="form-group">
                 <input class="btn btn-primary" type="submit" value="Salva">
             </div>
+    </div>
 
         {!! Form::close() !!}  
 

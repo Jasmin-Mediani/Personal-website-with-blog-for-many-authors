@@ -38,9 +38,6 @@ class PostsController extends Controller
         //$posts = Post::orderBy('created_at', 'desc')->take(1)->get();
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
 
-
-        
-
         //return view('posts.index', compact('posts'));
         return view('posts.index')->with('posts', $posts);
     }
@@ -85,7 +82,7 @@ class PostsController extends Controller
         } else {
             $fileNameToStore = 'noimage.jpg';  //se l'utente non uppa un'immagine apparirà questo
 
-            //ora faccio php artisan storage:link e le immagini che salvo in storage vanno anche nello storage di public
+            //ora nel terminale faccio php artisan storage:link e le immagini che salvo in storage vanno anche nello storage di public
         }
 
         //crea un post riempiendo i campi del form uno per uno (gli vanno detti):
@@ -172,7 +169,7 @@ class PostsController extends Controller
 
         /*************** CANCELLARE L'IMMAGINE CORRENTE CON CHECKBOX, A COMANDO DELL'UTENTE ******************/
 
-        // TRICK: Uso una check-box (a mo' di variabile sentinella) per cancellare l'immagine corrente del post: se la checkbox ha valore 'cancella' (e ce l'ha), parte la fuzione storage::delete...  In pratica uso la check box quasi come un bottone che al click si segna di cancellare la foto appena Salvo il post con le modifiche:
+        // TRICK: Uso una check-box (a mo' di variabile sentinella) per cancellare l'immagine corrente del post: se la checkbox ha valore 'cancella' (e ce l'ha), parte la fuzione storage::delete...  In pratica uso la check box quasi come un bottone che al click si segna di cancellare la foto appena salvo il post con le modifiche:
         if ($request->input ('delete-image') == 'checked') {
             Storage::delete('public/cover_images/'. $post->cover_image);  //immagine sull'HDD
             $post->cover_image = null;  //annullo l'immagine anche sul db, sennò funziona ma dà errore in console

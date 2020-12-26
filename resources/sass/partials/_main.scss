@@ -2,7 +2,7 @@
 
 .container {
     padding: 0px;
-    margin: 0px;
+    margin: 0 auto;
 }
 
 .sezione {
@@ -156,4 +156,8 @@ main {
     .invisible {
         display: none;
     }
+}
+
+.show-main {
+    padding: 5% !important;
 }

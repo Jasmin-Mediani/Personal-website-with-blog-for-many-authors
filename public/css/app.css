@@ -10992,7 +10992,7 @@ button:hover {
 
 .container {
   padding: 0px;
-  margin: 0px;
+  margin: 0 auto;
 }
 
 .sezione {
@@ -11147,6 +11147,10 @@ main .sezione-home .testo-jumbo h3 {
 
 .container-indice-blog .invisible {
   display: none;
+}
+
+.show-main {
+  padding: 5% !important;
 }
 
 footer {

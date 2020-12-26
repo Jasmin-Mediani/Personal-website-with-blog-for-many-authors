@@ -22,8 +22,8 @@ class PagesController extends Controller
     public function about()
     {
         /* metodo 2) */
-        $titolo = "About";
-        return view('pages.about')->with('titolo', $titolo);    //la pagina about.blade.php in resources/views/pages. 'titolo' è il nome che avrà la variabile nell'html ($titolo), mentre $titolo è la variabile che ho scritto qui in controller - quella che deve prendere. Cioé "per titolo dovrà avere la variabile $titolo".
+        $title = "About";
+        return view('pages.about')->with('titolo', $title);    //la pagina about.blade.php in resources/views/pages. 'titolo' è il nome che avrà la variabile nell'html{{$titolo}}, mentre $title è la variabile che ho scritto qui in controller - quella che deve prendere. Cioé {{$titolo}} lato html corrisponde a questo $title".
     }
 
     public function services()
@@ -31,8 +31,8 @@ class PagesController extends Controller
         
         /* metodo 3) */ 
             $data = array (
-            'titolo' => 'Servizi',
-            'servizi' => ['Servizio n° 1', 'Servizio n° 2', 'Servizio n° 3']
+            'titolo' => 'Trattamenti',
+            'servizi' => ['Trattamento n° 1', 'Trattamento n° 2', 'Trattamento n° 3']
             );
             
         return view('pages.services')->with($data); //la pagina services che si trova nella cartella pages, in resources. Al momento del return della view, se uso ->with() e passo un array, quando vado nella view/html ho già accesso all'interno dell'array. Devo solo decidere quale chiave usare... foreach servizi as servizio... <li> {{servizio}} </li> mi restituisce direttamente i servizi messi in lista. 
